@@ -46,6 +46,7 @@ RefreshableWidget<num>(
     return challenge.userParticipation!.donePercent;
    },
   refreshRate: const Duration(seconds: 20),
+  // builder, which is called every time you have new value from refreshCall
   builder: (context, value) {
     return ProgressWidget(
       percent: value,
