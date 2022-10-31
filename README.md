@@ -6,6 +6,15 @@
 
 Refreshable widget
 
+## Goal 🏹
+Refreshable Widget built for these two Stackoverflow issues, and also for my personal usage.
+https://stackoverflow.com/q/72025771
+https://stackoverflow.com/q/66539533
+
+Possible use case:
+You have a widget you use with FutureBuilder, shows an async data. But you need to update it periodically because there's no socket or stream that you can listen to.
+For example a progress for user in a game, which requires you to fetch whole game periodically, like every 20 seconds.
+
 ## Installation 💻
 
 **❗ In order to start using Refreshable Widget you must have the [Flutter SDK][flutter_install_link] installed on your machine.**
@@ -25,37 +34,28 @@ flutter packages get
 
 ---
 
-## Continuous Integration 🤖
-
-Refreshable Widget comes with a built-in [GitHub Actions workflow][github_actions_link] powered by [Very Good Workflows][very_good_workflows_link] but you can also add your preferred CI/CD solution.
-
-Out of the box, on each pull request and push, the CI `formats`, `lints`, and `tests` the code. This ensures the code remains consistent and behaves correctly as you add functionality or make changes. The project uses [Very Good Analysis][very_good_analysis_link] for a strict set of analysis options used by our team. Code coverage is enforced using the [Very Good Workflows][very_good_coverage_link].
-
----
-
-## Running Tests 🧪
-
-For first time users, install the [very_good_cli][very_good_cli_link]:
-
-```sh
-dart pub global activate very_good_cli
+## Usage 🛞
+```dart
+/// pass the type, [num] in below, which is a return type for [refreshCall] and [value] in [builder]
+RefreshableWidget<num>(
+  // optional initial value if you have
+  initialValue: challenge.userParticipation!.donePercent,
+  // your API call or logic to refresh
+  refreshCall: () async {
+    final challenge = await cadoo.getChallenge(id: widget.challengeId); 
+    return challenge.userParticipation!.donePercent;
+   },
+  refreshRate: const Duration(seconds: 20),
+  builder: (context, value) {
+    return ProgressWidget(
+      percent: value,
+    );
+  },
+  // optional error and loading widgets
+),
 ```
 
-To run all unit tests:
 
-```sh
-very_good test --coverage
-```
-
-To view the generated coverage report you can use [lcov](https://github.com/linux-test-project/lcov).
-
-```sh
-# Generate Coverage Report
-genhtml coverage/lcov.info -o coverage/
-
-# Open Coverage Report
-open coverage/index.html
-```
 
 [flutter_install_link]: https://docs.flutter.dev/get-started/install
 [github_actions_link]: https://docs.github.com/en/actions/learn-github-actions
