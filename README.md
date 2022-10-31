@@ -42,7 +42,7 @@ RefreshableWidget<num>(
   initialValue: challenge.userParticipation!.donePercent,
   // your API call or logic to refresh
   refreshCall: () async {
-    final challenge = await cadoo.getChallenge(id: widget.challengeId); 
+    final challenge = await service.getChallenge(id: widget.challengeId); 
     return challenge.userParticipation!.donePercent;
    },
   refreshRate: const Duration(seconds: 20),
