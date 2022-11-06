@@ -57,7 +57,7 @@ class _RefreshableWidgetState<T> extends State<RefreshableWidget<T>> {
     if (widget.initialValue != null) {
       initialValue = widget.initialValue!;
     }
-    stream = Stream<T>.periodic(widget.refreshRate).asyncMap((_) async {
+    stream = Stream<T?>.periodic(widget.refreshRate).asyncMap((_) async {
       try {
         final data = await widget.refreshCall();
         cached = data;
