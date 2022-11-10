@@ -55,7 +55,7 @@ class _RefreshableWidgetState<T> extends State<RefreshableWidget<T>> {
   @override
   void initState() {
     if (widget.initialValue != null) {
-      initialValue = widget.initialValue!;
+      initialValue = widget.initialValue as T;
     }
     stream = Stream<T?>.periodic(widget.refreshRate).asyncMap((_) async {
       try {

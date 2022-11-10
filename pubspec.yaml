@@ -5,7 +5,7 @@ homepage: https://github.com/mirkancal/refreshable_widget.git
 
 environment:
   sdk: ">=2.18.0 <3.0.0"
-  flutter: ">=3.3.3"
+  flutter: ">=2.10.5"
 
 dependencies:
   flutter:
