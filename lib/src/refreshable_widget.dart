@@ -13,7 +13,7 @@ typedef RefreshCall<T> = Future<T> Function();
 class RefreshableWidget<T> extends StatefulWidget {
   /// constructor
   const RefreshableWidget({
-    super.key,
+    Key? key,
     required this.builder,
     required this.refreshCall,
     this.initialValue,
@@ -23,7 +23,8 @@ class RefreshableWidget<T> extends StatefulWidget {
   })  : refreshRate = refreshRate ?? const Duration(seconds: 20),
         loadingWidget =
             loadingWidget ?? const Center(child: CircularProgressIndicator()),
-        errorWidget = errorWidget ?? const Text('An error occurred');
+        errorWidget = errorWidget ?? const Text('An error occurred'),
+        super(key: key);
 
   /// method that builds
   final RefreshableWidgetBuilder<T> builder;

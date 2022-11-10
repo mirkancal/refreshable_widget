@@ -1,3 +1,6 @@
+# 0.1.3+5
+
+- feat: support Dart 2.16
 # 0.1.2+4
 
 - feat: support Flutter 2.0
