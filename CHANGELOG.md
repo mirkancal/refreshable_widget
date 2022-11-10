@@ -1,3 +1,6 @@
+# 0.1.2+4
+
+- feat: support Flutter 2.0
 # 0.1.1+3
 
 - fix: computation missing error
